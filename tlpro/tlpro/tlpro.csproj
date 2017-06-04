@@ -70,6 +70,7 @@
     <Compile Include="Help.Designer.cs">
       <DependentUpon>Help.cs</DependentUpon>
     </Compile>
+    <Compile Include="Httpadd.cs" />
     <Compile Include="IPxiu.cs">
       <SubType>Form</SubType>
     </Compile>
