@@ -17,11 +17,11 @@ namespace tlpro
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             int i = AppEntry.Login();
-            if (i == 1)
+            if (i==1)
             {
                 Application.Run(AppEntry.MainForm);
             }
-            else if (i == 2)
+            else if(i == 2)
             {
                 Application.Run(AppEntry.TainForm);
             }

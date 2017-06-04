@@ -17,7 +17,7 @@ namespace tlpro
         public zhanghu()
         {
             InitializeComponent();
-            if (QuEntry.User != String.Empty)
+            if(QuEntry.User!=String.Empty)
             {
                 textBox1.ReadOnly = true;
                 textBox1.Text = QuEntry.User;
@@ -33,7 +33,7 @@ namespace tlpro
         private int ty = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ty == 1)
+            if(ty==1)
             {
                 if (textBox1.Text == String.Empty)
                 {
@@ -41,7 +41,7 @@ namespace tlpro
                     textBox1.Focus();
                     return;
                 }
-
+               
             }
             if (textBox2.Text == String.Empty)
             {
@@ -61,13 +61,13 @@ namespace tlpro
                 textBox3.Focus();
                 return;
             }
-            String s = zh();
-            if (s == "-1")
+            String s=zh();
+            if(s=="-1")
             {
-                MessageBox.Show("用户名已存在！", "警告");
+                MessageBox.Show("用户名已存在！","警告");
                 return;
             }
-            if (ty == 1)
+            if(ty==1)
                 MessageBox.Show("修改成功！");
             else
                 MessageBox.Show("注册成功！");
@@ -78,9 +78,9 @@ namespace tlpro
 
             try
             {
-                string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/xiugai.jsp?op=zhanghu&ty=" + ty.ToString()
-                    + "&name=" + textBox1.Text + "&pass=" + textBox2.Text;
-
+                string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/xiugai.jsp?op=zhanghu&ty="+ty.ToString()
+                    +"&name="+ textBox1.Text+"&pass="+textBox2.Text;
+                
                 WebRequest webReq = WebRequest.Create(getWeatherUrl);
                 WebResponse webResp = webReq.GetResponse();
                 Stream stream = webResp.GetResponseStream();
@@ -99,7 +99,7 @@ namespace tlpro
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+           
             this.Close();
         }
     }

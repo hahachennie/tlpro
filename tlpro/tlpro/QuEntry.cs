@@ -22,7 +22,7 @@ namespace tlpro
         }
         public static List<Question> Quentry
         {
-            get { return quentry; }
+            get { return  quentry; }
             set { quentry = value; }
         }
         public static String User

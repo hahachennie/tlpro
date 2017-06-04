@@ -19,21 +19,21 @@ namespace tlpro
         String chil = String.Empty;
         int zi;
         String id;
-        public Shangai(String pare, String chil, int zi, String id)
+        public Shangai(String pare,String chil,int zi,String id)
         {
             InitializeComponent();
             this.pare = pare;
             this.chil = chil;
             this.zi = zi;
             this.id = id;
-            if (chil == "-1")
+            if(chil=="-1")
             {
-                label1.Text = "你想要修改的是：科目 " + pare;
+                label1.Text = "你想要修改的是：科目 "+pare;
                 button2.Text = "删除科目";
             }
             else
             {
-                label1.Text = "你想要修改的是：" + pare + " 下的章节 " + chil;
+                label1.Text = "你想要修改的是：" + pare+" 下的章节 "+chil;
                 button2.Text = "删除章节";
             }
             Graphics g = label1.CreateGraphics();
@@ -50,7 +50,7 @@ namespace tlpro
                 return;
             }
             Regex reg = new Regex(@"^\d");
-            if (chil == "-1" && reg.IsMatch(textBox1.Text))
+            if (chil=="-1"&&reg.IsMatch(textBox1.Text))
             {
                 MessageBox.Show("科目名字不能以数字开头！", "警告");
                 textBox1.SelectAll();
@@ -58,9 +58,9 @@ namespace tlpro
                 return;
             }
             String name = textBox1.Text;
-            name.Replace(" ", "**");
+            name.Replace(" ","**");
             string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/xiugai.jsp?op=gai&ty="
-                    + chil + "&name=" + textBox1.Text + "&id=" + id;
+                    + chil + "&name=" + textBox1.Text+"&id="+id;
             String s = xiugai(getWeatherUrl);
             if (s.Equals("-1"))
             {
@@ -84,11 +84,11 @@ namespace tlpro
         {
             if (zi == 1)
             {
-                MessageBox.Show("删除科目时不允许科目下存在章节！", "警告");
+                MessageBox.Show("删除科目时不允许科目下存在章节！","警告");
                 return;
             }
             string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/xiugai.jsp?op=shan&ty="
-                  + chil + "&id=" + id;
+                  + chil + "&id="+id;
             String s = xiugai(getWeatherUrl);
             if (s.Equals("-1"))
             {
@@ -99,7 +99,7 @@ namespace tlpro
             {
                 MessageBox.Show("删除成功！", "恭喜");
                 AppEntry.TainForm.FillData();
-                this.Close();
+               this.Close();
             }
         }
         private string xiugai(String getWeatherUrl)

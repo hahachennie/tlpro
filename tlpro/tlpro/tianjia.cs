@@ -26,26 +26,26 @@ namespace tlpro
             }
             else
             {
-                label1.Text = "你希望添加的章节所属科目为：" + ty;
+                label1.Text = "你希望添加的章节所属科目为："+ty;
                 Graphics g = label1.CreateGraphics();
                 SizeF length = g.MeasureString(label1.Text, label1.Font);
-                int i = 172 - (int)length.Width / 2;
-                label1.Location = new Point(i, 25);
+                int i=172-(int)length.Width/2;
+                label1.Location = new Point(i,25);
                 this.ty = ty;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == String.Empty)
+            if (textBox1.Text==String.Empty)
             {
                 MessageBox.Show("信息不能为空！");
                 return;
             }
             Regex reg = new Regex(@"^\d");
-            if (ty == "1" && reg.IsMatch(textBox1.Text))
+            if (ty=="1"&&reg.IsMatch(textBox1.Text))
             {
-                MessageBox.Show("科目名字不能以数字开头！", "警告");
+                MessageBox.Show("科目名字不能以数字开头！","警告");
                 textBox1.SelectAll();
                 textBox1.Focus();
                 return;

@@ -128,18 +128,18 @@ namespace tlpro
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            richTextBox1.Text = (String)treeView1.SelectedNode.Tag;
+            richTextBox1.Text = (String)treeView1.SelectedNode.Tag;           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            richTextBox1.Clear();
+              richTextBox1.Clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             String treeype = String.Empty;
-            if (treeView1.SelectedNode.Parent == null)
+            if (treeView1.SelectedNode.Parent==null)
             {
                 treeype = "1";
             }
@@ -149,7 +149,7 @@ namespace tlpro
             }
             string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/xiugai.jsp?op=zhushi&ty="
                     + treeype + "&name=" + treeView1.SelectedNode.Text + "&nei=" + richTextBox1.Text;
-            String s = xiugai(getWeatherUrl);
+            String s=xiugai(getWeatherUrl);
             if (s.Equals("-1"))
             {
                 MessageBox.Show("服务器连接失败！", "警告");
@@ -159,14 +159,14 @@ namespace tlpro
             {
                 FillData();
             }
-
+           
 
         }
         private string xiugai(String getWeatherUrl)
         {
 
             try
-            {
+            {         
 
                 WebRequest webReq = WebRequest.Create(getWeatherUrl);
                 WebResponse webResp = webReq.GetResponse();
@@ -193,7 +193,7 @@ namespace tlpro
         private void button5_Click(object sender, EventArgs e)
         {
             String ty = String.Empty;
-
+            
             if (treeView1.SelectedNode == null)
             {
                 MessageBox.Show("请先选择目标科目或章节！", "警告");
@@ -218,12 +218,12 @@ namespace tlpro
             String chil = String.Empty;
             if (treeView1.SelectedNode == null)
             {
-                MessageBox.Show("请先选择目标科目或章节！", "警告");
+                MessageBox.Show("请先选择目标科目或章节！","警告");
                 return;
             }
             String id = treeView1.SelectedNode.Name;
             int i;
-            if (treeView1.SelectedNode.Nodes.Count > 0)
+            if(treeView1.SelectedNode.Nodes.Count > 0)
             {
                 i = 1;
             }
@@ -231,18 +231,18 @@ namespace tlpro
             {
                 i = -1;
             }
-            if (treeView1.SelectedNode.Parent == null)
+            if(treeView1.SelectedNode.Parent==null)
             {
                 pare = treeView1.SelectedNode.Text;
-                chil = "-1";
+                chil = "-1";               
             }
             else
             {
-
+                
                 pare = treeView1.SelectedNode.Parent.Text;
                 chil = treeView1.SelectedNode.Text;
             }
-            Shangai form = new Shangai(pare, chil, i, id);
+            Shangai form = new Shangai(pare, chil,i,id);
             form.ShowDialog();
         }
 
@@ -271,7 +271,7 @@ namespace tlpro
             {
                 type = "1";
             }
-            else if (radioButton2.Checked)
+            else if(radioButton2.Checked)
             {
                 type = "2";
             }
@@ -279,7 +279,7 @@ namespace tlpro
             {
                 type = "3";
             }
-            Addti form = new Addti(type, pare, chil);
+            Addti form = new Addti(type,pare,chil);
             form.ShowDialog();
 
         }

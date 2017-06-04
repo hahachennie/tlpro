@@ -24,7 +24,7 @@ namespace tlpro
         {
             FillData();
             Filllist();
-
+            
 
 
 
@@ -33,15 +33,15 @@ namespace tlpro
         {
             this.treeView1.Nodes.Clear();
             String s = Loadp().Trim();
-            if (s.Equals("-1"))
+            if(s.Equals("-1"))
             {
                 MessageBox.Show("服务器连接失败！", "警告");
                 return;
             }
             else
             {
-                //  MessageBox.Show(s);
-                stuXMLs(s);
+              //  MessageBox.Show(s);
+                stuXMLs(s);             
             }
         }
         private string Loadp()
@@ -49,10 +49,10 @@ namespace tlpro
 
             try
             {
-                string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/stuse.jsp";
-
+                string getWeatherUrl = "http://"+Httpadd.Add+":8080/tlpro/stuse.jsp";
+                
                 WebRequest webReq = WebRequest.Create(getWeatherUrl);
-                WebResponse webResp = webReq.GetResponse();
+                WebResponse webResp = webReq.GetResponse();                
                 Stream stream = webResp.GetResponseStream();
                 StreamReader sr = new StreamReader(stream, Encoding.GetEncoding("UTF-8"));
                 string html = sr.ReadToEnd();
@@ -71,15 +71,15 @@ namespace tlpro
             XmlDocument xx = new XmlDocument();
             xx.LoadXml(html);
             XmlNode xxNode = xx.SelectSingleNode("/ke");
-            if (!xxNode.HasChildNodes)
+            if(!xxNode.HasChildNodes)
             {
-
+                
                 return;
             }
-            TreeNode Tn = null;
+            TreeNode Tn=null;
             foreach (XmlNode xxNode2 in xxNode.ChildNodes)
             {
-
+               
                 TreeNode TN = new TreeNode(xxNode2.Name);
                 TN.Tag = xxNode2.SelectSingleNode("kzhushi").InnerText;
                 foreach (XmlNode xxNode3 in xxNode2.ChildNodes)
@@ -88,17 +88,17 @@ namespace tlpro
                     {
                         Tn = new TreeNode(xxNode3.InnerText);
                     }
-                    else if (xxNode3.Name == "zhushi")
+                    else if(xxNode3.Name == "zhushi")
                     {
                         Tn.Tag = xxNode3.InnerText;
                         TN.Nodes.Add(Tn);
                     }
-
-
+                  
+                    
 
                 }
                 treeView1.Nodes.Add(TN);
-
+               
 
             }
             treeView1.ExpandAll();
@@ -106,9 +106,9 @@ namespace tlpro
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            //   MessageBox.Show(Convert.ToString(treeView1.SelectedNode.Text));
-
-            richTextBox1.Text = treeView1.SelectedNode.Text + "\r\n" + (String)treeView1.SelectedNode.Tag;
+           //   MessageBox.Show(Convert.ToString(treeView1.SelectedNode.Text));
+           
+            richTextBox1.Text = treeView1.SelectedNode.Text+"\r\n"+ (String)treeView1.SelectedNode.Tag;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -118,14 +118,14 @@ namespace tlpro
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+           
             System.Environment.Exit(0);
-
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = "目前时间：" + DateTime.Now.ToString();
+            label1.Text ="目前时间："+ DateTime.Now.ToString();
         }
 
         private void 软件信息ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -141,37 +141,37 @@ namespace tlpro
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String type = String.Empty;
-            String name = String.Empty;
-            if (treeView1.SelectedNode.Parent == null)
-            {
+             String type = String.Empty;
+             String name = String.Empty;
+             if (treeView1.SelectedNode.Parent==null)
+             {
 
-
-                if (radioButton1.Checked)
-                {
-                    type = "1";
-                    MessageBox.Show("请先选择对应章节");
-                    return;
-
+              
+                  if(radioButton1.Checked)
+                  {
+                         type = "1";
+                         MessageBox.Show("请先选择对应章节");
+                         return;
+            
+                  }
+                  else if(radioButton2.Checked)
+                  {
+                         type = "2";
+                         MessageBox.Show("请先选择对应章节");
+                         return;
                 }
-                else if (radioButton2.Checked)
-                {
-                    type = "2";
-                    MessageBox.Show("请先选择对应章节");
-                    return;
-                }
-                else if (radioButton3.Checked)
-                {
-                    type = "3";
-                    name = treeView1.SelectedNode.Text;
-                }
+                  else if (radioButton3.Checked)
+                  {
+                         type = "3";
+                         name = treeView1.SelectedNode.Text;
+                  }
             }
             else
             {
                 if (radioButton1.Checked)
                 {
                     type = "1";
-                    name = treeView1.SelectedNode.Text;
+                    name= treeView1.SelectedNode.Text;
 
                 }
                 else if (radioButton2.Checked)
@@ -185,22 +185,22 @@ namespace tlpro
                     name = treeView1.SelectedNode.Parent.Text;
                 }
             }
-            Exam exam = new Exam(type, name);
+            Exam exam = new Exam(type,name);
             exam.ShowDialog();
         }
         public void Filllist()
         {
             listView1.Items.Clear();
-            String s = recordl();
+            String s=recordl();
             if (s.Equals("-1"))
             {
-
+                
                 return;
             }
             else
             {
-                XMLre(s);
-                //      MessageBox.Show(s);
+               XMLre(s);
+          //      MessageBox.Show(s);
             }
         }
         public string recordl()
@@ -208,7 +208,7 @@ namespace tlpro
 
             try
             {
-                string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/record.jsp?ruser=" + QuEntry.User;
+                string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/record.jsp?ruser="+QuEntry.User;
 
                 WebRequest webReq = WebRequest.Create(getWeatherUrl);
                 WebResponse webResp = webReq.GetResponse();
@@ -239,13 +239,13 @@ namespace tlpro
             {
 
                 ListViewItem lv = new ListViewItem(QuEntry.User);
-
-
+               
+               
                 foreach (XmlNode xxNode3 in xxNode2.ChildNodes)
-                {
-
-                    lv.SubItems.Add(xxNode3.InnerText);
-
+                {                      
+                      
+                       lv.SubItems.Add(xxNode3.InnerText);
+                       
                 }
                 listView1.Items.Add(lv);
 

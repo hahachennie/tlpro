@@ -14,9 +14,9 @@ namespace tlpro
         private int answer = 0;//作答答案：type==1时，1A 2B 3C 4D；type==2时，1对2错；type==3时无意义 
         private int rightan = 0;//正确答案
         private List<String> jianda = null;//type==3时有效,储存关键字
-        private String ka, kb, kc, kd;
+        private String ka,kb,kc,kd;
         private String temp = String.Empty;
-        public List<String> rejianda
+        public List<String> rejianda            
         {
             get { return jianda; }
             set { jianda = value; }

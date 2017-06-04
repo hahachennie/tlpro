@@ -26,8 +26,8 @@ namespace tlpro
         public static int TryLogin()
         {
             Load form = new Load();
-            DialogResult i = form.ShowDialog();
-            if (i == DialogResult.OK)
+            DialogResult i=form.ShowDialog();
+            if(i==DialogResult.OK)
                 return 1;
             else if (i == DialogResult.Yes)
                 return 2;
@@ -37,7 +37,7 @@ namespace tlpro
         {
             String user = textBox1.Text;
             String pass = textBox2.Text;
-            if (user == String.Empty)
+            if(user==String.Empty)
             {
                 MessageBox.Show("用户名不能为空！", "提示");
                 textBox1.Focus();
@@ -50,17 +50,17 @@ namespace tlpro
                 return;
             }
             label4.Text = "         正在登录中，请稍候...";
-            String xml = Loadp(user, pass).Trim();
-            if (xml.Equals("1"))
+            String xml=Loadp(user,pass).Trim();
+            if(xml.Equals("1"))
             {
                 label4.Text = "  欢迎使用课堂检测系统,系统启动中";
                 QuEntry.User = textBox1.Text;
-                AppEntry.MainForm = new StuMain();
+                AppEntry.MainForm = new StuMain(); 
                 this.DialogResult = DialogResult.OK;
                 this.Close(); //关闭登陆窗体 
 
             }
-            else if (xml.Equals("2"))
+            else if(xml.Equals("2"))
             {
                 label4.Text = "  欢迎使用课堂检测系统,系统启动中";
                 QuEntry.User = textBox1.Text;
@@ -68,7 +68,7 @@ namespace tlpro
                 this.DialogResult = DialogResult.Yes;
                 this.Close(); //关闭登陆窗体 
             }
-            else if (xml.Equals("3"))
+            else if(xml.Equals("3"))
             {
 
             }
@@ -88,9 +88,8 @@ namespace tlpro
         }
         private string Loadp(String name, String pass)
         {
-
-            try
-            {
+            
+            try { 
                 string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/load.jsp?name=" + name + "&passward=" + pass;
                 WebRequest webReq = WebRequest.Create(getWeatherUrl);
                 webReq.Timeout = 2000;
@@ -106,7 +105,7 @@ namespace tlpro
             {
                 return "-1";
             }
-
+          
         }
 
         private void label4_Click(object sender, EventArgs e)

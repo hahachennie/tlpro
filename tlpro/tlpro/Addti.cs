@@ -22,13 +22,13 @@ namespace tlpro
         int yida = 0;
         int ticount;
         List<Question> Qrand = null;
-        public Addti(String type, String pare, String chil)
+        public Addti(String type,String pare,String chil)
         {
             InitializeComponent();
             this.type = type;
             this.pare = pare;
             this.chil = chil;
-            if (type == "1")
+            if(type =="1")
             {
                 radioButton1.Visible = true;
                 radioButton2.Visible = true;
@@ -45,7 +45,7 @@ namespace tlpro
                 radioButton2.Visible = true;
                 radioButton1.Text = "√";
                 radioButton2.Text = "×";
-                radioButton1.Location = new Point(56, 217);
+                radioButton1.Location = new Point(56,217);
                 radioButton2.Location = new Point(56, 258);
             }
             else if (type == "3")
@@ -215,28 +215,28 @@ namespace tlpro
             else if (Qrand[yida].Type == 3)
             {
                 label1.Visible = true;
-
+                
                 richTextBox2.Visible = true;
                 richTextBox2.Text = "";
                 foreach (String iii in Qrand[yida].rejianda)
                 {
-                    richTextBox2.Text += iii + " ";
+                    richTextBox2.Text += iii+" ";
                 }
-                String temp = richTextBox2.Text.Trim();
-                richTextBox2.Text = temp.Replace(" ", "++");
+                String temp=richTextBox2.Text.Trim();
+                richTextBox2.Text = temp.Replace(" ","++");
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
             if (richTextBox1.Text == String.Empty)
             {
-                MessageBox.Show("题目不能为空！", "警告");
+                MessageBox.Show("题目不能为空！","警告");
                 return;
             }
-            if (type == "1")
+            if (type=="1")
             {
-                if (textBox1.Text == String.Empty || textBox2.Text == String.Empty ||
-                    textBox3.Text == String.Empty || textBox4.Text == String.Empty)
+                if(textBox1.Text==String.Empty|| textBox2.Text == String.Empty|| 
+                    textBox3.Text == String.Empty|| textBox4.Text == String.Empty)
                 {
                     MessageBox.Show("选项答案不能为空！", "警告");
                     return;
@@ -244,7 +244,7 @@ namespace tlpro
             }
             else if (type == "3")
             {
-                if (richTextBox2.Text == String.Empty)
+                if(richTextBox2.Text == String.Empty)
                 {
                     MessageBox.Show("简答题答案不能为空！", "警告");
                     return;
@@ -273,10 +273,10 @@ namespace tlpro
             String jianda = richTextBox2.Text.Replace("++", "</kjianda><kjianda>");
             if (type != "-1")
             {
-
+               
                 string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/xiugai.jsp?op=addti&ty="
-                   + type + "&timu=" + qu.Timu + "&ka=" + qu.Ka + "&kb=" + qu.Kb + "&kc=" + qu.Kc + "&kd=" + qu.Kd
-                   + "&ranswer=" + qu.Rightan.ToString() + "&kechen=" + pare + "&zhangjie=" + chil.Replace(" ", "**") + "&jianda=" + jianda;
+                   + type + "&timu=" + qu.Timu + "&ka=" + qu.Ka+"&kb="+qu.Kb+"&kc="+qu.Kc+"&kd=" +qu.Kd
+                   + "&ranswer=" + qu.Rightan.ToString()+"&kechen="+pare+"&zhangjie="+chil.Replace(" ","**")+"&jianda="+jianda;
                 String s = xiugai(getWeatherUrl);
                 if (s.Equals("-1"))
                 {
@@ -293,7 +293,7 @@ namespace tlpro
             {
                 string getWeatherUrl = "http://" + Httpadd.Add + ":8080/tlpro/xiugai.jsp?op=gait"
                  + "&timu=" + qu.Timu + "&ka=" + qu.Ka + "&kb=" + qu.Kb + "&kc=" + qu.Kc + "&kd=" + qu.Kd
-                  + "&ranswer=" + qu.Rightan.ToString() + "&id=" + Qrand[yida].ID + "&jianda=" + jianda;
+                  + "&ranswer=" + qu.Rightan.ToString() + "&id="+Qrand[yida].ID+"&jianda=" + jianda;
                 String s = xiugai(getWeatherUrl);
                 if (s.Equals("-1"))
                 {
@@ -303,7 +303,7 @@ namespace tlpro
                 else
                 {
                     MessageBox.Show("修改成功！", "恭喜");
-
+                    
                 }
             }
 
@@ -338,12 +338,12 @@ namespace tlpro
         private void button3_Click(object sender, EventArgs e)
         {
             if (yida == ticount - 1)
-            {
+            {               
                 MessageBox.Show("没有下一题了！");
 
                 return;
             }
-            ++yida;
+            ++yida;            
             radioButton1.Visible = false;
             radioButton2.Visible = false;
             radioButton3.Visible = false;
@@ -375,7 +375,7 @@ namespace tlpro
                 }
                 else
                 {
-
+                    
                     ++yida;
 
                 }
