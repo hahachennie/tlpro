@@ -52,6 +52,12 @@
     <Compile Include="Addti.Designer.cs">
       <DependentUpon>Addti.cs</DependentUpon>
     </Compile>
+    <Compile Include="Exam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Exam.Designer.cs">
+      <DependentUpon>Exam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="Addti.resx">
       <DependentUpon>Addti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Exam.resx">
+      <DependentUpon>Exam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
