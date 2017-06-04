@@ -66,6 +66,12 @@
     <Compile Include="StuMain.Designer.cs">
       <DependentUpon>StuMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeaMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeaMain.Designer.cs">
+      <DependentUpon>TeaMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="zhanghu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="StuMain.resx">
       <DependentUpon>StuMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeaMain.resx">
+      <DependentUpon>TeaMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="zhanghu.resx">
       <DependentUpon>zhanghu.cs</DependentUpon>
