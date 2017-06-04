@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace tlpro
 {
-    public partial class Help : Form
+    public partial class Form1 : Form
     {
-        public Help()
+        public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }
