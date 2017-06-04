@@ -52,6 +52,7 @@
     <Compile Include="Addti.Designer.cs">
       <DependentUpon>Addti.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppEntry.cs" />
     <Compile Include="Exam.cs">
       <SubType>Form</SubType>
     </Compile>
